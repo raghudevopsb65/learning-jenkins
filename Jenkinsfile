@@ -62,6 +62,7 @@ pipeline {
         sh 'echo URL = ${SAMPLE_URL}'
         echo SAMPLE_URL
         echo SSH
+        echo PERSON
       }
     }
 
