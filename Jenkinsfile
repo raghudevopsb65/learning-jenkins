@@ -21,7 +21,7 @@ pipeline {
     fixed {
       echo "Hello"
     }
-    failed {
+    failure {
       echo "Failed State"
     }
     cleanup {
