@@ -102,31 +102,64 @@
 //}
 
 
+//pipeline {
+//  agent any
+//
+//  stages {
+//    stage('one') {
+//      steps {
+//        echo 'ONE'
+//      }
+//    }
+//    stage('two') {
+//      when {
+//        expression {
+//          BRANCH_NAME == "master"
+//        }
+//      }
+//      steps {
+//        echo 'TWO'
+//      }
+//    }
+//  }
+//
+//
+//}
+
 pipeline {
   agent any
-
   stages {
-    stage('one') {
+    stage('S1') {
       steps {
-        echo 'ONE'
+        echo 'S1'
       }
     }
-    stage('two') {
-      when {
-        expression {
-          BRANCH_NAME == "master"
-        }
-      }
+    stage('S2') {
       steps {
-        echo 'TWO'
+        echo 'S2'
+      }
+    }
+    stage('Parallel Stages') {
+      parallel {
+        stage('P1') {
+          steps {
+            sh 'sleep 120'
+          }
+        }
+        stage('P2') {
+          steps {
+            sh 'sleep 120'
+          }
+        }
+        stage('P3') {
+          steps {
+            sh 'sleep 120'
+          }
+        }
       }
     }
   }
-
-
 }
-
-
 
 
 
