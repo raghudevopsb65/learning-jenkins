@@ -35,28 +35,30 @@
 //}
 
 
-//pipeline {
-//  agent any
-//
-//  environment {
-//    SAMPLE_URL="google.com"
-//  }
-//
-//  stages {
-//
-//    stage("One${SAMPLE_URL}") {
-//      steps {
-//        sh 'echo URL = ${SAMPLE_URL}'
-//        echo SAMPLE_URL
-//      }
-//    }
-//
-//  }
-//}
+pipeline {
+  agent any
 
-env.SAMPLE_URL="google.com"
-node() {
-  stage("One - ${SAMPLE_URL}") {
-    echo SAMPLE_URL
+  environment {
+    SAMPLE_URL="google.com"
+    SSH = credentials("SSH")
+  }
+
+  stages {
+
+    stage("One") {
+      steps {
+        sh 'echo URL = ${SAMPLE_URL}'
+        echo SAMPLE_URL
+        echo SSH
+      }
+    }
+
   }
 }
+
+//env.SAMPLE_URL="google.com"
+//node() {
+//  stage("One - ${SAMPLE_URL}") {
+//    echo SAMPLE_URL
+//  }
+//}
