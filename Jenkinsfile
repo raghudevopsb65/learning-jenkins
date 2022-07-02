@@ -46,7 +46,7 @@ pipeline {
 
     stage('One') {
       steps {
-        echo "URL = ${SAMPLE_URL}"
+        sh 'echo URL = ${SAMPLE_URL}'
         echo SAMPLE_URL
       }
     }
